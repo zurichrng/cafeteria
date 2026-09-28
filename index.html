@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Café Aroma - cafetería">
+    <title>Café Aroma</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="app">
+
+        <!-- ==================== PANTALLA 1: INICIO ==================== -->
+        <section class="screen home-screen" id="inicio">
+            <header class="topbar">
+                <input class="search" type="search" placeholder="barra de búsqueda...">
+                <div class="brand">café aroma</div>
+                <button class="header-cart" onclick="showScreen('carrito')" aria-label="Ver carrito">
+                    🛒 <span id="cartCount">0</span>
+                </button>
+            </header>
+
+            <div class="hero">
+                <span class="eyebrow">BIENVENIDO</span>
+                <h1>Café Aroma</h1>
+                <p>Buen café, mejores momentos.</p>
+            </div>
+
+            <div class="slider-row">
+                <button class="round-btn" onclick="changeSlide(-1)">‹</button>
+                <div class="slider-info">
+                    <strong id="slideTitle">Nuestro café</strong>
+                    <span id="slideText">Descubre nuestros productos</span>
+                </div>
+                <button class="round-btn" onclick="changeSlide(1)">›</button>
+            </div>
+
+            <div class="home-content">
+                <div class="special-offer">
+                    <span>OFERTA ESPECIAL</span>
+                    <h2>Café premium</h2>
+                    <p>Una experiencia pensada para ti.</p>
+                    <button onclick="showScreen('productos')">Ver más</button>
+                </div>
+
+                <div class="category-box">
+                    <div class="section-heading">
+                        <span>Lista de productos</span>
+                        <span>›</span>
+                    </div>
+
+                    <button class="category" onclick="showScreen('productos')">
+                        <span class="category-icon">☕</span> Café <span>›</span>
+                    </button>
+                    <button class="category" onclick="showScreen('productos')">
+                        <span class="category-icon">🥤</span> Bebidas frías <span>›</span>
+                    </button>
+                    <button class="category" onclick="showScreen('productos')">
+                        <span class="category-icon">🍵</span> Tés e infusiones <span>›</span>
+                    </button>
+                    <button class="category" onclick="showScreen('productos')">
+                        <span class="category-icon">🥐</span> Pastelería <span>›</span>
+                    </button>
+                    <button class="category" onclick="showScreen('productos')">
+                        <span class="category-icon">🥪</span> Sándwiches <span>›</span>
+                    </button>
+                    <button class="category" onclick="showScreen('productos')">
+                        <span class="category-icon">🍪</span> ¿quiero que sea? <span>›</span>
+                    </button>
+                </div>
+            </div>
+
+            <nav class="bottom-nav">
+                <button class="active" onclick="showScreen('inicio')">Menú</button>
+                <button>Nosotros</button>
+                <button onclick="showScreen('productos')">Reservas</button>
+                <button>Contacto</button>
+            </nav>
+        </section>
+
+        <!-- ==================== PANTALLA 2: PRODUCTOS ==================== -->
+        <section class="screen products-screen" id="productos">
+            <header class="screen-heading">
+                <div>
+                    <span class="eyebrow">SELECCIONADOS ESPECIALMENTE PARA TI</span>
+                    <h2>Productos Destacados</h2>
+                    <p>Lista de productos sugeridos</p>
+                </div>
+            </header>
+
+            <div class="products-list" id="productsList"></div>
+
+            <div class="selected-box">
+                <div class="selected-title">
+                    <span>LISTA DE PRODUCTOS ELEGIDOS</span>
+                    <button onclick="showScreen('carrito')">Ver todo</button>
+                </div>
+                <div id="selectedPreview"></div>
+            </div>
+
+            <div class="special-offer compact">
+                <span>OFERTA ESPECIAL</span>
+                <h2>Experiencia café premium</h2>
+                <p>ads</p>
+                <button onclick="showScreen('inicio')">Ver más</button>
+            </div>
+
+            <nav class="mobile-nav">
+                <button onclick="showScreen('inicio')">← Inicio</button>
+                <button class="active">Productos</button>
+                <button onclick="showScreen('carrito')">Carrito →</button>
+            </nav>
+        </section>
+
+        <!-- ==================== PANTALLA 3: CARRITO ==================== -->
+        <section class="screen cart-screen" id="carrito">
+            <header class="screen-heading">
+                <div>
+                    <span class="eyebrow">TU PEDIDO</span>
+                    <h2>Productos Seleccionados</h2>
+                    <p>Revisa tu selección antes de ordenar</p>
+                </div>
+            </header>
+
+            <div class="cart-list" id="cartList"></div>
+
+            <div class="cart-summary">
+                <div>
+                    <span>Total</span>
+                    <strong id="cartTotal">$0</strong>
+                </div>
+                <button class="checkout-btn" onclick="checkout()">Finalizar compra</button>
+            </div>
+
+            <div class="special-offer compact">
+                <span>OFERTA ESPECIAL</span>
+                <h2>Combo Café + Pastel</h2>
+                <button onclick="showScreen('productos')">Ver más</button>
+            </div>
+
+            <nav class="mobile-nav">
+                <button onclick="showScreen('inicio')">← Inicio</button>
+                <button onclick="showScreen('productos')">Productos</button>
+                <button class="active">Carrito</button>
+            </nav>
+        </section>
+
+    </main>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
